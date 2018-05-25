@@ -1,0 +1,25 @@
+<?php
+/**
+Plugin Name: Hide Menu Pages
+Plugin URI: https://widerwebs.com
+Description: Hide certain pages from the admin menu.
+Version: 0.0.1
+License: Private
+*/
+
+// Do not allow this file to be called directly.
+if (!defined('ABSPATH')) { exit; }
+
+function ww_remove_admin_menu_pages() {
+    if (current_user_can('administrator')) {
+        return;
+    }
+    remove_menu_page('tools.php');
+    remove_menu_page('themes.php');
+    remove_menu_page('edit.php?post_type=project');
+    remove_menu_page('wpseo_dashboard');
+    remove_menu_page('theme_my_login');
+    remove_menu_page('options-general.php');
+	remove_menu_page('my-sites.php');
+}
+add_action('admin_menu', 'ww_remove_admin_menu_pages');
