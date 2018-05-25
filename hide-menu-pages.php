@@ -11,7 +11,7 @@ License: Private
 if (!defined('ABSPATH')) { exit; }
 
 function ww_remove_admin_menu_pages() {
-	if (current_user_can('administrator')) {
+	if (is_super_admin()) {
 		return;
 	}
 	remove_menu_page('tools.php');
@@ -25,7 +25,7 @@ function ww_remove_admin_menu_pages() {
 add_action('admin_menu', 'ww_remove_admin_menu_pages');
 
 function ww_remove_wp_icon() {
-	if (!current_user_can('administrator')) {
+	if (!is_super_admin()) {
 		echo '<style>li#wp-admin-bar-wp-logo, li#wp-admin-bar-site-name { display: none; }</style>';
 	}
 }
