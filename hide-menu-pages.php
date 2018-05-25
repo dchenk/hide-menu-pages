@@ -23,3 +23,10 @@ function ww_remove_admin_menu_pages() {
 	remove_menu_page('my-sites.php');
 }
 add_action('admin_menu', 'ww_remove_admin_menu_pages');
+
+function ww_remove_wp_icon() {
+	if (!current_user_can('administrator')) {
+		echo '<style>li#wp-admin-bar-wp-logo, li#wp-admin-bar-site-name { display: none; }</style>';
+	}
+}
+add_action('admin_head', 'ww_remove_wp_icon');
