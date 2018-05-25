@@ -21,7 +21,6 @@ function ww_remove_admin_menu_pages() {
 	remove_menu_page('theme_my_login');
 	remove_menu_page('gf_edit_forms');
 	remove_menu_page('options-general.php');
-	remove_menu_page('my-sites.php');
 }
 add_action('admin_menu', 'ww_remove_admin_menu_pages', 999);
 
